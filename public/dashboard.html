@@ -20,7 +20,7 @@
 <body>
 <div class="wrap">
   <div class="top">
-    <div class="brand"><div class="logo">VQ</div><div><div class="eyebrow">● LIVE CHANNEL REPORT</div><div class="title" id="channelName">VISHAL QX</div><div class="sub">Meta / Instagram / Facebook → Telegram</div></div></div>
+    <div class="brand"><div class="logo">VQ</div><div><div class="eyebrow">● LIVE CHANNEL REPORT</div><div class="title" id="channelName">VISHAL QX</div><div class="sub">META ADS → TELEGRAM • TRACKED INVITE ONLY</div></div></div>
     <a class="logout" href="/logout">Logout</a>
   </div>
 
@@ -42,8 +42,8 @@
 
   <div class="grid2">
     <section class="panel">
-      <h2>🚀 From ad to channel</h2>
-      <div class="hint">How many people moved through each measurable step</div>
+      <h2>🚀 From Meta ad to channel</h2>
+      <div class="hint">Only tracked Meta/Facebook/Instagram traffic and the configured Meta Ads Telegram invite are counted.</div>
       <div class="funnel">
         <div class="step"><div class="ico">📣</div><div><div class="name">Opened the page from an ad</div><div class="bar"><span id="visitBar" style="width:100%"></span></div></div><div class="num" id="visits">0</div></div>
         <div class="step"><div class="ico">👆</div><div><div class="name">Tapped the JOIN button</div><div class="small" id="clickPct">0% of previous step</div><div class="bar"><span id="clickBar" style="width:0%"></span></div></div><div class="num" id="clicks">0</div></div>
@@ -67,14 +67,14 @@
 
   <div class="grid2">
     <section class="panel">
-      <h2>📊 Traffic sources</h2>
-      <div class="hint">Join requests attributed by Telegram invite link</div>
+      <h2>📊 Meta Ads results</h2>
+      <div class="hint">Only the configured Meta Ads invite link is included.</div>
       <div id="sources"></div>
     </section>
 
     <section class="panel">
-      <h2>🔗 Invite links</h2>
-      <div class="hint">Source-specific join-request links</div>
+      <h2>🔗 Tracked invite</h2>
+      <div class="hint">The dashboard only counts this exact Telegram invite link.</div>
       <div id="invites"></div>
       <div class="form">
         <input id="inviteName" placeholder="Name e.g. Facebook Ads">
@@ -105,7 +105,7 @@ async function load(){
   if(!r.ok){ location.href="/"; return; }
   const d = await r.json();
   document.getElementById("channelName").textContent=d.channel_name || "VISHAL QX";
-  document.getElementById("rangeLabel").textContent = currentRange==="today" ? "Today" : currentRange==="yesterday" ? "Yesterday" : currentRange==="7d" ? "Last 7 days" : currentRange==="30d" ? "Last 30 days" : "All tracked time";
+  document.getElementById("rangeLabel").textContent = currentRange==="today" ? "Today • Meta Ads only" : currentRange==="yesterday" ? "Yesterday • Meta Ads only" : currentRange==="7d" ? "Last 7 days • Meta Ads only" : currentRange==="30d" ? "Last 30 days • Meta Ads only" : "All tracked Meta Ads time";
   document.getElementById("requests").textContent=d.funnel.requests;
   document.getElementById("joined").textContent=d.status.joined;
   document.getElementById("pending").textContent=d.status.pending;
