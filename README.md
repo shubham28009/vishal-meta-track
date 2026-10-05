@@ -8,6 +8,12 @@ Meta/Facebook/Instagram ad -> Systeme.io landing page -> Telegram join request -
 
 Telegram webhook retries are deduplicated by `update_id`, and the server also prevents a second pending request for the same Telegram user from being inserted within a short window. Existing duplicate pending test rows are cleaned during startup.
 
+## Meta Ads only dashboard
+
+The dashboard intentionally excludes generic/channel-wide Telegram join requests. Telegram request counts, member status, latest requests, and source totals are filtered to the exact invite in `TRACKED_META_INVITE_LINK`. If that variable is blank, the app falls back to `FACEBOOK_INVITE_LINK`. Page visits and JOIN clicks are limited to Meta-attributed sources (`meta`, `facebook`, `instagram`).
+
+Use your dedicated Meta Ads join-request invite link as `TRACKED_META_INVITE_LINK`.
+
 ## What it tracks
 
 - Landing-page visits
