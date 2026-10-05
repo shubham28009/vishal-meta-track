@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VISHAL QX • Live Channel Report</title>
+<style>
+:root{--bg:#071120;--panel:#111e34;--panel2:#0d192d;--line:#263755;--text:#edf4ff;--muted:#8ca1c0;--blue:#2da9ff;--green:#35d58b;--yellow:#ffc64c;--red:#ff637a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top right,#17304b 0,#071120 46%,#050b14 100%);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+.wrap{max-width:1200px;margin:0 auto;padding:28px 20px 60px}.top{display:flex;justify-content:space-between;gap:20px;align-items:center}.brand{display:flex;gap:14px;align-items:center}.logo{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#38b6ff,#5d49ff);font-weight:900}.eyebrow{font-size:12px;letter-spacing:1.8px;color:var(--green);font-weight:800}.title{font-size:28px;font-weight:900}.sub{color:var(--muted);font-size:13px;margin-top:3px}.logout{color:#abc1df;text-decoration:none;border:1px solid var(--line);padding:9px 12px;border-radius:10px}
+.tabs{display:flex;gap:7px;background:#111b2d;border:1px solid var(--line);padding:5px;border-radius:14px;margin-top:24px}.tabs button{flex:1;border:0;background:transparent;color:#a7bbd7;padding:11px 8px;border-radius:10px;font-weight:800;cursor:pointer}.tabs button.active{background:var(--blue);color:white;box-shadow:0 10px 30px #2da9ff33}
+.datebar{display:flex;justify-content:center;margin:18px 0;color:#b9c9df;font-size:13px}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:linear-gradient(180deg,#152641,#101c31);border:1px solid var(--line);border-radius:18px;padding:18px}.card .n{font-size:35px;font-weight:950;line-height:1}.card .l{margin-top:8px;color:var(--muted);font-weight:650}.grid2{display:grid;grid-template-columns:1.1fr .9fr;gap:14px;margin-top:14px}.panel{background:linear-gradient(180deg,#14243d,#101b2e);border:1px solid var(--line);border-radius:18px;padding:18px}.panel h2{margin:0 0 6px;font-size:18px}.panel .hint{color:var(--muted);font-size:12px;margin-bottom:15px}.funnel{display:grid;gap:11px}.step{display:grid;grid-template-columns:40px 1fr auto;gap:12px;align-items:center}.ico{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:#17365d}.step .name{font-weight:800}.step .small{font-size:12px;color:var(--muted);margin-top:3px}.bar{height:7px;background:#22314b;border-radius:999px;overflow:hidden;margin-top:7px}.bar span{display:block;height:100%;background:linear-gradient(90deg,#238cff,#59c6ff);border-radius:999px}.num{font-size:22px;font-weight:900}.status{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.mini{background:#0b1526;border:1px solid #1d304d;border-radius:14px;padding:15px}.mini .n{font-size:25px;font-weight:900}.green{color:var(--green)}.yellow{color:var(--yellow)}.red{color:var(--red)}.blue{color:var(--blue)}
+.tablewrap{overflow:auto}.table{width:100%;border-collapse:collapse}.table th,.table td{padding:11px;border-bottom:1px solid #20304a;text-align:left;font-size:13px;white-space:nowrap}.table th{color:#91a7c6;font-size:12px}.pill{display:inline-flex;padding:5px 9px;border-radius:999px;background:#163354;color:#9fd4ff;font-size:11px;font-weight:800}.pill.joined{background:#123a2b;color:#6ee7b7}.pill.left{background:#3a2a13;color:#ffd17a}.pill.removed{background:#431e2c;color:#ff9db0}.actions button{border:1px solid #315175;background:#112640;color:#d9ebff;padding:6px 9px;border-radius:8px;cursor:pointer;margin-right:5px}.actions button.approve{background:#123b2c;border-color:#24684c}.actions button.reject{background:#3e1d2a;border-color:#693246}
+.invite{display:flex;justify-content:space-between;gap:12px;align-items:center;border:1px solid #243753;padding:12px;border-radius:12px;margin-top:9px}.invite code{color:#b9d9ff;word-break:break-all}.form{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;margin-top:12px}.form input,.form select{background:#0b1526;color:#fff;border:1px solid #2b3d5b;border-radius:10px;padding:11px}.form button{background:var(--blue);border:0;color:#fff;border-radius:10px;padding:11px 15px;font-weight:800;cursor:pointer}
+.notice{margin-top:12px;padding:10px;border-radius:10px;background:#0a1728;color:#91a7c6;font-size:12px}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.step{grid-template-columns:34px 1fr auto}.form{grid-template-columns:1fr;}.top{align-items:flex-start}.title{font-size:22px}}
+@media(max-width:540px){.wrap{padding:18px 12px 50px}.cards{grid-template-columns:1fr}.tabs{overflow:auto}.tabs button{min-width:90px}.top{flex-direction:column}.logout{align-self:flex-end}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="brand"><div class="logo">VQ</div><div><div class="eyebrow">● LIVE CHANNEL REPORT</div><div class="title" id="channelName">VISHAL QX</div><div class="sub">Meta / Instagram / Facebook → Telegram</div></div></div>
+    <a class="logout" href="/logout">Logout</a>
+  </div>
+
+  <div class="tabs">
+    <button data-range="today" class="active">Today</button>
+    <button data-range="yesterday">Yesterday</button>
+    <button data-range="7d">7 days</button>
+    <button data-range="30d">30 days</button>
+    <button data-range="all">All time</button>
+  </div>
+  <div class="datebar" id="rangeLabel"></div>
+
+  <div class="cards">
+    <div class="card"><div class="n" id="requests">0</div><div class="l">Join requests</div></div>
+    <div class="card"><div class="n green" id="joined">0</div><div class="l">Joined / approved</div></div>
+    <div class="card"><div class="n yellow" id="pending">0</div><div class="l">Awaiting approval</div></div>
+    <div class="card"><div class="n red" id="left">0</div><div class="l">Left / removed</div></div>
+  </div>
+
+  <div class="grid2">
+    <section class="panel">
+      <h2>🚀 From ad to channel</h2>
+      <div class="hint">How many people moved through each measurable step</div>
+      <div class="funnel">
+        <div class="step"><div class="ico">📣</div><div><div class="name">Opened the page from an ad</div><div class="bar"><span id="visitBar" style="width:100%"></span></div></div><div class="num" id="visits">0</div></div>
+        <div class="step"><div class="ico">👆</div><div><div class="name">Tapped the JOIN button</div><div class="small" id="clickPct">0% of previous step</div><div class="bar"><span id="clickBar" style="width:0%"></span></div></div><div class="num" id="clicks">0</div></div>
+        <div class="step"><div class="ico">📝</div><div><div class="name">Sent a Telegram join request</div><div class="small" id="requestPct">0% of previous step</div><div class="bar"><span id="requestBar" style="width:0%"></span></div></div><div class="num" id="request2">0</div></div>
+        <div class="step"><div class="ico">✅</div><div><div class="name">Joined / approved</div><div class="small" id="joinPct">0% of previous step</div><div class="bar"><span id="joinBar" style="width:0%"></span></div></div><div class="num" id="join2">0</div></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>👥 Member status</h2>
+      <div class="hint">Current status across tracked requests</div>
+      <div class="status">
+        <div class="mini"><div class="green n" id="sjoined">0</div><div>In channel</div></div>
+        <div class="mini"><div class="yellow n" id="spending">0</div><div>Pending</div></div>
+        <div class="mini"><div class="red n" id="sremoved">0</div><div>Removed</div></div>
+        <div class="mini"><div class="yellow n" id="sleft">0</div><div>Left</div></div>
+      </div>
+      <div class="notice">Telegram can confirm join-request and member-status events. “Telegram app opened” is not treated as a guaranteed server-side event.</div>
+    </section>
+  </div>
+
+  <div class="grid2">
+    <section class="panel">
+      <h2>📊 Traffic sources</h2>
+      <div class="hint">Join requests attributed by Telegram invite link</div>
+      <div id="sources"></div>
+    </section>
+
+    <section class="panel">
+      <h2>🔗 Invite links</h2>
+      <div class="hint">Source-specific join-request links</div>
+      <div id="invites"></div>
+      <div class="form">
+        <input id="inviteName" placeholder="Name e.g. Facebook Ads">
+        <select id="inviteSource"><option value="facebook">Facebook</option><option value="instagram">Instagram</option><option value="unknown">Other</option></select>
+        <button onclick="createInvite()">Create</button>
+      </div>
+      <div class="notice">After creating a Facebook/Instagram link, copy it into Railway Variables as FACEBOOK_INVITE_LINK / INSTAGRAM_INVITE_LINK, then redeploy.</div>
+    </section>
+  </div>
+
+  <section class="panel" style="margin-top:14px">
+    <h2>👤 Latest members / requests</h2>
+    <div class="hint">Newest Telegram users and their current status</div>
+    <div class="tablewrap">
+      <table class="table"><thead><tr><th>User</th><th>Telegram ID</th><th>Source</th><th>Time</th><th>Status</th><th>Action</th></tr></thead><tbody id="latest"></tbody></table>
+    </div>
+  </section>
+</div>
+
+<script>
+let currentRange = "today";
+
+function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]));}
+function fmtDate(v){return new Date(v).toLocaleString();}
+
+async function load(){
+  const r = await fetch("/api/dashboard?range="+encodeURIComponent(currentRange), {cache:"no-store"});
+  if(!r.ok){ location.href="/"; return; }
+  const d = await r.json();
+  document.getElementById("channelName").textContent=d.channel_name || "VISHAL QX";
+  document.getElementById("rangeLabel").textContent = currentRange==="today" ? "Today" : currentRange==="yesterday" ? "Yesterday" : currentRange==="7d" ? "Last 7 days" : currentRange==="30d" ? "Last 30 days" : "All tracked time";
+  document.getElementById("requests").textContent=d.funnel.requests;
+  document.getElementById("joined").textContent=d.status.joined;
+  document.getElementById("pending").textContent=d.status.pending;
+  document.getElementById("left").textContent=d.status.left + d.status.removed;
+  document.getElementById("visits").textContent=d.funnel.visitors;
+  document.getElementById("clicks").textContent=d.funnel.clicks;
+  document.getElementById("request2").textContent=d.funnel.requests;
+  document.getElementById("join2").textContent=d.status.joined;
+  const cp=d.funnel.visitors?Math.min(100,(d.funnel.clicks/d.funnel.visitors)*100):0;
+  const rp=d.funnel.clicks?Math.min(100,(d.funnel.requests/d.funnel.clicks)*100):0;
+  const jp=d.funnel.requests?Math.min(100,(d.status.joined/d.funnel.requests)*100):0;
+  document.getElementById("clickPct").textContent=Math.round(cp)+"% of previous step";
+  document.getElementById("requestPct").textContent=Math.round(rp)+"% of previous step";
+  document.getElementById("joinPct").textContent=Math.round(jp)+"% of previous step";
+  document.getElementById("clickBar").style.width=cp+"%";
+  document.getElementById("requestBar").style.width=rp+"%";
+  document.getElementById("joinBar").style.width=jp+"%";
+
+  document.getElementById("sjoined").textContent=d.status.joined;
+  document.getElementById("spending").textContent=d.status.pending;
+  document.getElementById("sremoved").textContent=d.status.removed;
+  document.getElementById("sleft").textContent=d.status.left;
+
+  document.getElementById("sources").innerHTML=(d.sources.length?d.sources.map(s=>`
+    <div class="invite"><div><b>${esc(s.source)}</b><div class="hint" style="margin:4px 0 0">${s.requests} requests · ${s.joined} joined · ${s.pending} pending</div></div><span class="pill">${s.joined}/${s.requests}</span></div>`).join(""):"<div class='notice'>No source-attributed requests yet.</div>");
+
+  document.getElementById("invites").innerHTML=(d.invite_links.length?d.invite_links.map(x=>`
+    <div class="invite"><div><b>${esc(x.name)}</b><div><code>${esc(x.invite_link)}</code></div></div><span class="pill">${esc(x.source)}</span></div>`).join(""):"<div class='notice'>No links created yet.</div>");
+
+  document.getElementById("latest").innerHTML=d.latest.map(x=>{
+    const name=[x.first_name,x.last_name].filter(Boolean).join(" ") || "Unknown";
+    const user=x.username?("@"+x.username):name;
+    const cls=x.status==="joined"?"joined":x.status==="left"?"left":x.status==="removed"?"removed":"";
+    const actions=x.status==="pending"?`<div class="actions"><button class="approve" onclick="act(${x.id},'approve')">Approve</button><button class="reject" onclick="act(${x.id},'decline')">Reject</button></div>`:"—";
+    return `<tr><td>${esc(user)}</td><td>${esc(x.telegram_user_id)}</td><td>${esc(x.source)}</td><td>${esc(fmtDate(x.requested_at))}</td><td><span class="pill ${cls}">${esc(x.status)}</span></td><td>${actions}</td></tr>`;
+  }).join("");
+}
+
+async function act(id, action){
+  const r=await fetch("/api/admin/"+action+"/"+id,{method:"POST"});
+  if(!r.ok){alert("Action failed");return;}
+  await load();
+}
+
+async function createInvite(){
+  const name=document.getElementById("inviteName").value.trim();
+  const source=document.getElementById("inviteSource").value;
+  if(!name){alert("Enter a name");return;}
+  const r=await fetch("/api/admin/create-invite",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name,source})});
+  const d=await r.json();
+  if(!r.ok){alert(d.error||"Failed");return;}
+  alert("Created: "+d.invite.invite_link + (d.env_key?("\n\nSet Railway variable: "+d.env_key):""));
+  document.getElementById("inviteName").value="";
+  await load();
+}
+
+document.querySelectorAll(".tabs button").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll(".tabs button").forEach(x=>x.classList.remove("active"));
+  b.classList.add("active");
+  currentRange=b.dataset.range;
+  load();
+}));
+
+const es=new EventSource("/api/events");
+es.addEventListener("dashboard",load);
+es.addEventListener("join_request",load);
+es.addEventListener("member_update",load);
+load();
+setInterval(load, 15000);
+</script>
+</body>
+</html>
