@@ -1,3 +1,8 @@
+CREATE TABLE IF NOT EXISTS processed_updates (
+  update_id BIGINT PRIMARY KEY,
+  processed_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
 CREATE TABLE IF NOT EXISTS settings (
   key TEXT PRIMARY KEY,
   value TEXT NOT NULL

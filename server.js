@@ -88,6 +88,10 @@ async function ensureSchema() {
       key TEXT PRIMARY KEY,
       value TEXT NOT NULL
     );
+    CREATE TABLE IF NOT EXISTS processed_updates (
+      update_id BIGINT PRIMARY KEY,
+      processed_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
     CREATE TABLE IF NOT EXISTS web_visits (
       id BIGSERIAL PRIMARY KEY,
       session_id TEXT,
@@ -157,6 +161,17 @@ async function ensureSchema() {
     CREATE INDEX IF NOT EXISTS idx_join_requests_user ON join_requests(telegram_user_id);
     CREATE INDEX IF NOT EXISTS idx_member_events_occurred_at ON member_events(occurred_at);
   `);
+  await db(`
+    DELETE FROM join_requests a
+    USING join_requests b
+    WHERE a.id > b.id
+      AND a.chat_id = b.chat_id
+      AND a.telegram_user_id = b.telegram_user_id
+      AND a.status = 'pending'
+      AND b.status = 'pending'
+      AND ABS(EXTRACT(EPOCH FROM (a.requested_at - b.requested_at))) <= 2
+  `);
+
   await db(
     `INSERT INTO settings(key,value) VALUES ('channel_name',$1) ON CONFLICT(key) DO UPDATE SET value=EXCLUDED.value`,
     [CHANNEL_NAME]
@@ -454,6 +469,18 @@ async function handleJoinRequest(u) {
   const finalSource = existingInvite.rows[0]?.source || source;
   const finalName = existingInvite.rows[0]?.name || invite.name || null;
 
+  const existingPending = await db(`
+    SELECT id FROM join_requests
+    WHERE chat_id=$1
+      AND telegram_user_id=$2
+      AND status='pending'
+      AND requested_at >= NOW() - INTERVAL '10 minutes'
+    ORDER BY requested_at DESC
+    LIMIT 1
+  `, [chat.id, user.id]);
+
+  if (existingPending.rowCount > 0) return;
+
   const inserted = await db(`
     INSERT INTO join_requests(chat_id,telegram_user_id,invite_link,invite_name,source,status,raw_update)
     VALUES($1,$2,$3,$4,$5,'pending',$6)
@@ -520,7 +547,15 @@ app.post("/webhook/telegram", async (req, res) => {
       if (got !== WEBHOOK_SECRET) return res.sendStatus(403);
     }
 
-    const update = req.body;
+    const update = req.body || {};
+    if (Number.isSafeInteger(update.update_id)) {
+      const seen = await db(
+        `INSERT INTO processed_updates(update_id) VALUES($1) ON CONFLICT(update_id) DO NOTHING RETURNING update_id`,
+        [update.update_id]
+      );
+      if (seen.rowCount === 0) return res.sendStatus(200);
+    }
+
     if (update.chat_join_request) await handleJoinRequest(update.chat_join_request);
     if (update.chat_member) await handleChatMember(update.chat_member);
 

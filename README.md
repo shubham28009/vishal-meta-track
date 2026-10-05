@@ -4,6 +4,10 @@ A Railway-ready Node.js + PostgreSQL app for:
 
 Meta/Facebook/Instagram ad -> Systeme.io landing page -> Telegram join request -> live dashboard.
 
+## Duplicate protection
+
+Telegram webhook retries are deduplicated by `update_id`, and the server also prevents a second pending request for the same Telegram user from being inserted within a short window. Existing duplicate pending test rows are cleaned during startup.
+
 ## What it tracks
 
 - Landing-page visits
